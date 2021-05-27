@@ -1,13 +1,9 @@
-const express = require("express");
-const app = express();
-app.use(express.json());
-require("./app/routes/celulas.routes.js")(app);
+import app from './src/server/app.js'
+import envConfig from './src/config/env.js'
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});
-// set port, listen for requests
-app.listen(3000, () => {
-  console.log("Server is running on port 3000.");
-});
+const { PORT } = envConfig
+
+app.listen(PORT, (e) => {
+  if (e) throw e
+  console.log(`celula-report started on port ${PORT}`);
+})

@@ -1,4 +1,5 @@
-const sql = require("./db.js");
+import sql from '../data/index.js'
+
 
 // constructor
 const Celula = function(celula) {
@@ -7,7 +8,7 @@ const Celula = function(celula) {
   this.host = celula.host;
 };
 
-console.log('Celula ' , Celula);
+
 Celula.create = (newCelula, result) => {
   console.log('newCelula', newCelula);
   //console.log('newCelula ',newCelula);
@@ -110,4 +111,4 @@ Celula.removeAll = result => {
   });
 };
 
-module.exports = Celula;
+export default Celula;

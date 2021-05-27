@@ -1,4 +1,4 @@
-const sql = require("./db.js");
+import sql from '../data/index.js'
 
 // constructor
 const User = function (user) {
@@ -129,4 +129,4 @@ User.removeAll = result => {
     });
 };
 
-module.exports = User;
+export default User;
