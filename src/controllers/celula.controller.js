@@ -29,7 +29,6 @@ export default function celulaController() {
       else res.send(data);
     });
   };
-
   // Retrieve all Customers from the database.
   const findAll = (req, res) => {
     Celula.getAll((err, data) => {
@@ -41,7 +40,6 @@ export default function celulaController() {
       else res.send(data);
     });
   };
-
   // Find a single Customer with a customerId
   const findOne = (req, res) => {
     Celula.findById(req.params.celulaId, (err, data) => {
@@ -58,7 +56,6 @@ export default function celulaController() {
       } else res.send(data);
     });
   };
-
   // Update a Customer identified by the customerId in the request
   const update = (req, res) => {
     // Validate Request
@@ -86,7 +83,6 @@ export default function celulaController() {
       }
     );
   };
-
   // Delete a Customer with the specified customerId in the request
   const remove = (req, res) => {
     Celula.remove(req.params.celulaId, (err, data) => {
@@ -103,7 +99,6 @@ export default function celulaController() {
       } else res.send({ message: `Customer was deleted successfully!` });
     });
   };
-
   // Delete all Customers from the database.
   const deleteAll = (req, res) => {
     Celula.removeAll((err, data) => {
