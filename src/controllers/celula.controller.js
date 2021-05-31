@@ -2,25 +2,24 @@ import Celula from '../models/celula.model.js'
 
 export default function celulaController() {
   // Create and Save a new Customer
-  const create = (req, res) => {
+  const create = async (req, res) => {
     // Validate request
     if (!req.body) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
     }
-    console.log('create cellula', req.body);
-
+    
     // Create a Customer
     const celula = new Celula({
       name: req.body.name,
       leader: req.body.leader,
       host: req.body.host
     });
-    console.log('Celula 2 ', celula.body);
+
     // Save Customer in the database
     Celula.create(celula, (err, data) => {
-      console.log('celula', celula.body);
+      
       if (err)
         res.status(500).send({
           message:
@@ -30,7 +29,7 @@ export default function celulaController() {
     });
   };
   // Retrieve all Customers from the database.
-  const findAll = (req, res) => {
+  const findAll = async (req, res) => {
     Celula.getAll((err, data) => {
       if (err)
         res.status(500).send({
@@ -41,7 +40,7 @@ export default function celulaController() {
     });
   };
   // Find a single Customer with a customerId
-  const findOne = (req, res) => {
+  const findOne = async (req, res) => {
     Celula.findById(req.params.celulaId, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
@@ -57,7 +56,7 @@ export default function celulaController() {
     });
   };
   // Update a Customer identified by the customerId in the request
-  const update = (req, res) => {
+  const update = async (req, res) => {
     // Validate Request
     if (!req.body) {
       res.status(400).send({
@@ -84,7 +83,7 @@ export default function celulaController() {
     );
   };
   // Delete a Customer with the specified customerId in the request
-  const remove = (req, res) => {
+  const remove = async (req, res) => {
     Celula.remove(req.params.celulaId, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
@@ -100,7 +99,7 @@ export default function celulaController() {
     });
   };
   // Delete all Customers from the database.
-  const deleteAll = (req, res) => {
+  const deleteAll = async (req, res) => {
     Celula.removeAll((err, data) => {
       if (err)
         res.status(500).send({

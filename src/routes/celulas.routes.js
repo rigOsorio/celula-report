@@ -1,44 +1,24 @@
-import {routesCelula, routesUser} from '../controllers/index.js'
+import { Router } from 'express'
+import { routesCelula } from '../controllers/index.js'
 
-export default app => {
+const router = Router();
+// Create a new celula
+router.post("/celula", routesCelula.create);
 
-  // Create a new celula
-  app.post("/celula", routesCelula.create);
+// Retrieve all celulas
+router.get("/celula", routesCelula.findAll);
 
-  // Retrieve all celulas
-  app.get("/celula", routesCelula.findAll);
+// Retrieve a single celula with celulaId
+router.get("/celula/:celulaId", routesCelula.findOne);
 
-  // Retrieve a single celula with celulaId
-  app.get("/celula/:celulaId", routesCelula.findOne);
+// Update a celula with celulaId
+router.put("/celula/:celulaId", routesCelula.update);
 
-  // Update a celula with celulaId
-  app.put("/celula/:celulaId", routesCelula.update);
+// Delete a celula with celulaId
+router.delete("/celula/:celulaId", routesCelula.remove);
 
-  // Delete a celula with celulaId
-  app.delete("/celula/:celulaId", routesCelula.delete);
-
-  // Create a new celula
-  app.delete("/celula", routesCelula.deleteAll);
+// Delete all celulas
+router.delete("/celula", routesCelula.deleteAll);
 
 
-  // Create a new user
-  app.post("/user", routesUser.create);
-
-  // Retrieve all users
-  app.get("/user", routesUser.findAll);
-
-  // Retrieve a single user with userId
-  app.get("/user/one", routesUser.findRoleOne);
-
-  // Retrieve a single user with userId
-  app.get("/user/:userId", routesUser.findOne);
-
-  // Update a user with userId
-  app.put("/user/:userId", routesUser.update);
-
-  // Delete a user with userId
-  app.delete("/user/:userId", routesUser.delete);
-
-  // Create a new user
-  app.delete("/user", routesUser.deleteAll);
-};
+export default router;
