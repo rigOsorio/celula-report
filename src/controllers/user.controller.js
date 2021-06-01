@@ -1,4 +1,4 @@
-import User from '../models/user.model.js'
+import User from '../models/user-model.js'
 
 export default function userController() {
   // Create and Save a new Customer

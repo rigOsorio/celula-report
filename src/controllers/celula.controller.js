@@ -1,4 +1,4 @@
-import Celula from '../models/celula.model.js'
+import Celula from '../models/celula-model.js'
 
 export default function celulaController() {
   // Create and Save a new Customer
@@ -25,7 +25,7 @@ export default function celulaController() {
           message:
             err.message || "Some error occurred while creating the Customer."
         });
-      else res.send(data);
+      else res.status(201).send(data);
     });
   };
   // Retrieve all Customers from the database.
@@ -36,7 +36,7 @@ export default function celulaController() {
           message:
             err.message || "Some error occurred while retrieving customers."
         });
-      else res.send(data);
+      else res.status(200).send(data);
     });
   };
   // Find a single Customer with a customerId
@@ -52,7 +52,7 @@ export default function celulaController() {
             message: "Error retrieving Customer with id " + req.params.celulaId
           });
         }
-      } else res.send(data);
+      } else res.status(200).send(data);
     });
   };
   // Update a Customer identified by the customerId in the request
@@ -78,7 +78,7 @@ export default function celulaController() {
               message: "Error updating Customer with id " + req.params.celulaId
             });
           }
-        } else res.send(data);
+        } else res.status(201).send(data);
       }
     );
   };
@@ -95,7 +95,7 @@ export default function celulaController() {
             message: "Could not delete Customer with id " + req.params.celulaId
           });
         }
-      } else res.send({ message: `Customer was deleted successfully!` });
+      } else res.status(201).send({ message: `Customer was deleted successfully!` });
     });
   };
   // Delete all Customers from the database.
@@ -106,7 +106,7 @@ export default function celulaController() {
           message:
             err.message || "Some error occurred while removing all customers."
         });
-      else res.send({ message: `All Customers were deleted successfully!` });
+      else res.status(201).send({ message: `All Customers were deleted successfully!` });
     });
   };
   return {
