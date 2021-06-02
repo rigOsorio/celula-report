@@ -14,7 +14,7 @@ import {
 const ObjectId = 24234231
 
 const celulaAction = makeCelulaAction({ makeCelula,celulaDb,ObjectId });
-const userAction = makeUserAction({ makeUser,userDb,ObjectId });
+const userAction = new makeUserAction({ makeUser,userDb,ObjectId });
 
 
 export{

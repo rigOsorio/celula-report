@@ -1,7 +1,7 @@
-import { Router } from 'express'
+import express from 'express'
 import { routesCelula } from '../controllers/index.js'
 
-const router = Router();
+const router = express.Router();
 // Create a new celula
 router.post("/celula", routesCelula.create);
 

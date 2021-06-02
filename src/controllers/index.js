@@ -1,5 +1,5 @@
 import celulaController from './celula.controller.js'
-import userController from './user.controller.js'
+import makeUsersController from './user.controller.js'
 
 import {
     userAction,
@@ -7,7 +7,7 @@ import {
 } from '../actions/index.js'
 
 const routesCelula = celulaController({ userAction });
-const routesUser = userController({ celulaAction });
+const routesUser = makeUsersController({ celulaAction });
 
 export {
     routesCelula,

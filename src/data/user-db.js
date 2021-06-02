@@ -1,6 +1,8 @@
-export default async function makeUserDb({makeDb, ObjectId}) {
-    this.makeDb = makeDb
-    this.ObjectId = ObjectId+1
+export default class makeUserDb {
+    constructor({ makeDb, ObjectId }) {
+        this.makeDb = makeDb
+        this.ObjectId = ObjectId + 1
+    }
 }
 
 const { prototype } = makeUserDb
