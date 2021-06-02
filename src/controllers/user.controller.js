@@ -1,9 +1,15 @@
 export default function makeUsersController({userAction}) {
   async function create(req, res) {
-    const user = await userAction.createUser()
-    if (user) {
-      res.json(user);
+    try {
+      const user = await userAction.createUser()
+      if (user) {
+        res.send(user);
+      }
+    } catch (error) {
+      console.log(error);
     }
+
+    
   };
   async function findAll(req, res) {
     const user = await userAction.getAllUsers()
@@ -59,8 +65,8 @@ export default function makeUsersController({userAction}) {
       }
     );
   };
-  const remove = (req, res) => {
-    User.remove(req.params.userId, (err, data) => {
+  async function remove (req, res) {
+    await userAction.removeUser(req.params.userId, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
@@ -74,8 +80,8 @@ export default function makeUsersController({userAction}) {
       } else res.send({ message: `Customer was deleted successfully!` });
     });
   };
-  const deleteAll = (req, res) => {
-    User.removeAll((err, data) => {
+  async function deleteAll (req, res) {
+    User.removeAllUsers((err, data) => {
       if (err)
         res.status(500).send({
           message:
